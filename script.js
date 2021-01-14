@@ -4,14 +4,15 @@
     var array = [];
     var arrayUtente = [];
     var arrayRisultato =[];
-    
-    var j = 0
+    var arrayErrati = [];
+    var j = 0;
     
     while (j < 5) {
         var numeri_array = Math.floor(Math.random()*(100 - 1 + 1) + 1);
         if (array.includes(numeri_array) == false){
             array.push(numeri_array);
         } else {
+            j--;
             var numeri_array = Math.floor(Math.random()*(100 - 1 + 1) + 1);
         }
         j++;
@@ -24,17 +25,31 @@
 
 alert(array);
 var promptClock = setTimeout(function(){
-    for (i = 0; i < 5; i++){
-        var utente = parseInt(prompt("Inserisci un numero"));
-        arrayUtente.push(utente);
+    var i = 0;
+    while ( i < 5){
+        var utente = parseInt(prompt("Inserisci un numero tra 1  e 100"));
+        if((utente <= 100 && utente >= 1) && (arrayUtente.includes(utente) == false)) {
+            arrayUtente.push(utente);
+        } else {
+            alert("Intervallo errato!!");
+            i--;
+            utente;
+        }
+        i++;
+    }
 
-        // descrivo le condizioni di vittoria
+    // descrivo le condizioni di vittoria
 
-        if (array.includes(arrayUtente[i]) && arrayUtente[i]!= arrayUtente[i - 1]) {
-            arrayRisultato.push(arrayUtente[i]);
+    console.log(arrayUtente);
+    for (k = 0; k < arrayUtente.length; k++) {
+        if (array.includes(arrayUtente[k]) == true) {
+            arrayRisultato.push(arrayUtente[k]);
+        } else {
+            arrayErrati.push(arrayUtente[k]);
         }
     }
     console.log(arrayRisultato);
+    console.log(arrayErrati);
 }, 3000);
 
 
