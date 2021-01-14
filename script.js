@@ -11,6 +11,8 @@
         var numeri_array = Math.floor(Math.random()*(100 - 1 + 1) + 1);
         if (array.includes(numeri_array) == false){
             array.push(numeri_array);
+        } else {
+            var numeri_array = Math.floor(Math.random()*(100 - 1 + 1) + 1);
         }
         j++;
     };
@@ -28,7 +30,7 @@ var promptClock = setTimeout(function(){
 
         // descrivo le condizioni di vittoria
 
-        if (array.includes(arrayUtente[i]) && arrayUtente[i]!= arrayUtente[i]) {
+        if (array.includes(arrayUtente[i]) && arrayUtente[i]!= arrayUtente[i - 1]) {
             arrayRisultato.push(arrayUtente[i]);
         }
     }
